@@ -26,7 +26,7 @@ const Header = () => {
             <Image src="/article.svg" alt="logo" width={60} height={60} />
           </Link>
           <ul className="flex ms-auto gap-5">
-            {categories.map((category, idx): any => {
+            {categories.map((category: any, idx: any): any => {
               return (
                 <li key={idx}>
                   <Link href={"/" + category?.path_name}>{category.name}</Link>
