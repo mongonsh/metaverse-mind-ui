@@ -41,7 +41,6 @@ export { apiRoute as default, config };
 
 export const config = {
   api: {
-    bodyParser: false, 
+    bodyParser: false,
+  },
 };
-
-}
