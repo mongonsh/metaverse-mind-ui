@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 // Fetch CSRF token from Django backend
 export const fetchCsrfToken = async () => {
   const response = await axios.get(
-    `metaverse-mind.vercel.app/article/get-csrf-token`,
+    `https://metaverse-mind.vercel.app/article/get-csrf-token`,
     {
       withCredentials: true,
     }
