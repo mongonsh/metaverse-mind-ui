@@ -1,0 +1,46 @@
+import { axiosInstance } from "@/utils/csrf";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { useState, useEffect } from "react";
+export async function generateStaticParams() {
+  const backendUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}`;
+
+  let res = await axiosInstance.get(backendUrl + "/article/get-all-articles");
+
+  const articles = res.data;
+
+  return articles.map((article: any) => ({
+    id: article.id,
+  }));
+}
+
+export default async function Article({ params }: any) {
+  let { id } = params;
+  const backendUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}`;
+  console.log("id:", id);
+  let res = await axiosInstance.get(
+    backendUrl + `/article/get-article?id=${id}`
+  );
+  let data = res.data;
+
+  return (
+    <>
+      <Header />
+      <main>
+        <div className="container mx-auto py-4">
+          <div className="bg-white shadow-md rounded-lg p-6">
+            <h1>{data.title}</h1>
+          </div>
+          <div className="bg-white shadow-md rounded-lg p-6">
+            <span className="p-1 bg-orange-600 text-sky-50 rounded-md">
+              эдийн засаг
+            </span>
+            <img src={"" + data.media_url} alt="economy" />
+            <div dangerouslySetInnerHTML={{ __html: data.content }} />
+          </div>
+        </div>
+      </main>
+      <Footer />
+    </>
+  );
+}
