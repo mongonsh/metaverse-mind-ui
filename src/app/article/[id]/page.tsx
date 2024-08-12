@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useState, useEffect } from "react";
 export async function generateStaticParams() {
-  const backendUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}`;
+  const backendUrl = `https://metaverse-mind.vercel.app`;
 
   let res = await axiosInstance.get(backendUrl + "/article/get-all-articles");
 
@@ -16,7 +16,7 @@ export async function generateStaticParams() {
 
 export default async function Article({ params }: any) {
   let { id } = params;
-  const backendUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}`;
+  const backendUrl = `https://metaverse-mind.vercel.app`;
   console.log("id:", id);
   let res = await axiosInstance.get(
     backendUrl + `/article/get-article?id=${id}`

@@ -7,7 +7,7 @@ import { axiosInstance } from "@/utils/csrf";
 
 const Header = () => {
   let [categories, setCategories] = useState([]);
-  const backendUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}`;
+  const backendUrl = `https://metaverse-mind.vercel.app`;
   let getAllCategories = async () => {
     let res = await axiosInstance.get(
       backendUrl + "/article/get-all-categories"

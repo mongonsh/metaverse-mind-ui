@@ -4,7 +4,7 @@ import { useState } from "react";
 import { axiosInstance } from "@/utils/csrf";
 function Create() {
   let [category, setCategory] = useState("");
-  const backendUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}`;
+  const backendUrl = `https://metaverse-mind.vercel.app`;
   let addCategory = async (category: any) => {
     let res = await axiosInstance.post(backendUrl + "/article/add", {
       category: category,

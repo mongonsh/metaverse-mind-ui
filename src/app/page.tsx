@@ -11,7 +11,7 @@ import SpecialCard from "@/components/SpecialCard";
 
 const Home = () => {
   let [articles, setArticles] = useState([]);
-  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+  const backendUrl = "https://metaverse-mind.vercel.app";
 
   let getAllArticles = async () => {
     let res = await axiosInstance.get(`${backendUrl}/article/get-all-articles`);
