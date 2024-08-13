@@ -18,7 +18,7 @@ export const fetchCsrfToken = async () => {
 
 // Create an Axios instance with the CSRF token
 export const axiosInstance = axios.create({
-  baseURL: `metaverse-mind.vercel.app`, // Your Django backend URL
+  baseURL: `https://metaverse-mind.vercel.app`, // Your Django backend URL
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
