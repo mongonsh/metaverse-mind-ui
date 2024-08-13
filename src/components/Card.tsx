@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Card = ({ data }: any) => {
   return (
-    <article className="article-bg p-4 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+    <article className="article-bg p-1 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 z-50 bg-white">
       <img
         src={"" + data.media_url}
         alt="Article 2"
