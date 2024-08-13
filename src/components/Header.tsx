@@ -22,7 +22,7 @@ const Header = () => {
     <header>
       <nav className="bg-white">
         <div className="container mx-auto flex p-2 text-[#000] items-center">
-          <Link href={"#"} className="flex gap-2 items-center">
+          <Link href={"/"} className="flex gap-2 items-center">
             <Image src="/article.svg" alt="logo" width={60} height={60} />
           </Link>
           <ul className="flex ms-auto gap-5">
