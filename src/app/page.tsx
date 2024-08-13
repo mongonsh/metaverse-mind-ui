@@ -11,7 +11,7 @@ import SpecialCard from "@/components/SpecialCard";
 import Spinner from "@/components/Spinner";
 
 const Home = () => {
-  let [articles, setArticles] = useState(null);
+  let [articles, setArticles] = useState([]);
   const backendUrl = "https://metaverse-mind.vercel.app";
 
   let getAllArticles = async () => {
@@ -25,14 +25,14 @@ const Home = () => {
   return (
     <>
       <Header />
-      {!articles && (
+      {articles.length == 0 && (
         <div className="h-[500px] block ">
           <div className="  absolute top-[60px] bg-gray-950 right-0 left-0 bottom-0 inset-0 flex justify-center items-center ">
             <Spinner />
           </div>
         </div>
       )}
-      {articles && (
+      {articles.length > 0 && (
         <main className="container mx-auto py-8 px-4">
           <div className="h-[500px] block ">
             <div className="  absolute top-[60px] bg-gray-950 right-0 left-0 bottom-0 inset-0  ">
