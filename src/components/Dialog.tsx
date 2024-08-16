@@ -19,7 +19,7 @@ const MessageDialog = ({ isOpen, message, onClose, type }: any) => {
     <div className={dialogStyles.base}>
       <div className={dialogStyles.overlay} onClick={onClose}></div>
       <div className={dialogStyles.dialog}>
-        <h2 className={dialogStyles.header[type] || "text-gray-800"}>
+        <h2 className={"text-gray-800"}>
           {type === "success" && "Амжилт"}
           {type === "error" && "Алдаа"}
           {type === "info" && "Мэдээлэл"}
