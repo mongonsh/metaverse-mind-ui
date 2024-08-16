@@ -1,10 +1,24 @@
 "use client";
 import React, { useState } from "react";
 import { axiosInstance } from "@/utils/csrf";
+import MessageDialog from "@/components/Dialog";
 
 function Create() {
   const [category, setCategory] = useState("");
   const [message, setMessage] = useState("");
+  const [isDialogOpen, setDialogOpen] = useState(false);
+  const [dialogMessage, setDialogMessage] = useState("");
+  const [dialogType, setDialogType] = useState("info");
+
+  const openDialog = (type: any, message: any) => {
+    setDialogType(type);
+    setDialogMessage(message);
+    setDialogOpen(true);
+  };
+
+  const closeDialog = () => {
+    setDialogOpen(false);
+  };
   const backendUrl = `https://metaverse-mind.vercel.app`;
 
   const addCategory = async (category: any) => {
@@ -17,12 +31,12 @@ function Create() {
       const res = await axiosInstance.post(backendUrl + "/article/add", {
         category: category,
       });
-      if (res.status === 200) {
-        setMessage("Ангилал амжилттай нэмэгдлээ.");
+      if (res.status === 200 || res.status === 201) {
+        openDialog("success", "Ангилал амжилттай нэмэгдлээ.");
         setCategory(""); // Clear the input field after successful submission
       }
     } catch (error) {
-      setMessage("Ангилал нэмэх үед алдаа гарлаа.");
+      openDialog("error", "Ангилал нэмэх үед алдаа гарлаа.");
       console.error("Error adding category:", error);
     }
   };
@@ -46,8 +60,8 @@ function Create() {
         >
           Нэмэх
         </button>
-        {message && <p className="text-red-500">{message}</p>}
       </div>
+      <MessageDialog />
     </div>
   );
 }

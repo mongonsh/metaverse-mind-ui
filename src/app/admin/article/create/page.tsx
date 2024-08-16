@@ -7,6 +7,7 @@ import ReactQuillDynamicWrapper from "@/components/ReactQuillDynamicWrapper";
 import { axiosInstance } from "@/utils/csrf";
 import { languages } from "@/utils/languages";
 import multer from "multer";
+import MessageDialog from "@/components/Dialog";
 
 const Article = () => {
   const [title, setTitle] = useState<string>("");
@@ -15,6 +16,19 @@ const Article = () => {
   const [language, setLanguage] = useState<string>("");
   const [uploadedImage, setUploadedImage] = useState("");
   const [mediaUrl, setMediaUrl] = useState("");
+  const [isDialogOpen, setDialogOpen] = useState(false);
+  const [dialogMessage, setDialogMessage] = useState("");
+  const [dialogType, setDialogType] = useState("info");
+
+  const openDialog = (type: any, message: any) => {
+    setDialogType(type);
+    setDialogMessage(message);
+    setDialogOpen(true);
+  };
+
+  const closeDialog = () => {
+    setDialogOpen(false);
+  };
 
   let [categories, setCategories] = useState([]);
 
@@ -58,7 +72,6 @@ const Article = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const media_url = await fileUpload();
-    console.log("media", media_url);
     // Logic to save the article
     let res = await axiosInstance.post(backendUrl + "/article/add-article", {
       title,
@@ -67,6 +80,11 @@ const Article = () => {
       language,
       media_url: media_url,
     });
+    if (res.status == 201) {
+      openDialog("success", "Амжилттай хадгалагдлаа.");
+    } else {
+      openDialog("error", "Алдаа гарлаа.");
+    }
   };
 
   return (
@@ -141,6 +159,13 @@ const Article = () => {
           <img src={mediaUrl} alt="thumb" />
         </div>
       )}
+
+      <MessageDialog
+        isOpen={isDialogOpen}
+        message={dialogMessage}
+        onClose={closeDialog}
+        type={dialogType}
+      />
     </div>
   );
 };
