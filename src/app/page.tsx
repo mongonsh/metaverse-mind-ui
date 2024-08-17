@@ -35,11 +35,13 @@ const Home = () => {
       {articles.length > 0 && (
         <main className="container mx-auto py-8 px-4">
           <div className="h-[500px] block ">
-            <div className="  absolute top-[60px] bg-gray-950 right-0 left-0 bottom-0 inset-0  ">
-              <img src="/cover.png" className="mx-3" />
-              <section className="mb-8">
-                <SpecialCard data={articles[0]} />
-              </section>
+            <div className="absolute top-[60px] bg-gray-950 right-0 left-0 bottom-0 inset-0  ">
+              <div className="container mx-auto">
+                <img src="/cover.png" className="mx-3" />
+                <section className="mb-8">
+                  <SpecialCard data={articles[0]} />
+                </section>
+              </div>
             </div>
           </div>
 

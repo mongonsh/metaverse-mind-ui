@@ -23,7 +23,7 @@ export default function RootLayout({
           rel="stylesheet"
         ></link>
       </head>
-      <body className="bg-gray-100">
+      <body>
         <main>{children}</main>
       </body>
     </html>

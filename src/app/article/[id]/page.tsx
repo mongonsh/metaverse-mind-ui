@@ -3,6 +3,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useState, useEffect } from "react";
 import Spinner from "@/components/Spinner";
+import Button from "@/components/Button";
+import Image from "next/image";
 export async function generateStaticParams() {
   const backendUrl = `https://metaverse-mind.vercel.app`;
 
@@ -35,15 +37,41 @@ export default async function Article({ params }: any) {
         </div>
       )}
       <main>
-        <div className="container mx-auto py-4">
-          <div className="bg-white shadow-md rounded-lg p-6">
-            <h1>{data.title}</h1>
+        <div className=" container mx-auto py-4">
+          <h1 className=" drop-shadow-md font-semibold text-4xl text-center my-3">
+            {data.title}
+          </h1>
+          <div className="flex justify-between items-center">
+            <div className="flex gap-2 items-center">
+              <div className="relative w-[74px] h-[74px]">
+                <Image
+                  src="/avatar.png"
+                  className="rounded-full "
+                  objectFit="cover"
+                  fill
+                  alt="avatar"
+                />
+              </div>
+
+              <div className="flex-col gap-1">
+                <h3 className=" text-md font-semibold">
+                  Mungunshagai Tumurbaatar
+                </h3>
+                <p className=" text-[#666666]">engineer, writer</p>
+              </div>
+            </div>
+            <div className="links flex gap-1 py-1">
+              <Button val={"Share"} />
+              <Button val={"Link"} />
+              <Button val={"Tweet"} />
+              <Button val={"Share"} />
+            </div>
           </div>
           <div className="bg-white shadow-md rounded-lg p-6">
-            <span className="p-1 bg-orange-600 text-sky-50 rounded-md">
+            <span className=" inline-block m-1 p-1 bg-orange-600 text-sky-50 rounded-md">
               эдийн засаг
             </span>
-            <img src={"" + data.media_url} alt="economy" />
+            <img src={"" + data.media_url} alt="economy" className="w-[60%]" />
             <div dangerouslySetInnerHTML={{ __html: data.content }} />
           </div>
         </div>
