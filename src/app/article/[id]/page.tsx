@@ -41,7 +41,7 @@ export default async function Article({ params }: any) {
           <h1 className=" drop-shadow-md font-semibold text-4xl text-center my-3">
             {data.title}
           </h1>
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center max-sm:flex-col ">
             <div className="flex gap-2 items-center">
               <div className="relative w-[74px] h-[74px]">
                 <Image
@@ -71,8 +71,15 @@ export default async function Article({ params }: any) {
             <span className=" inline-block m-1 p-1 bg-orange-600 text-sky-50 rounded-md">
               эдийн засаг
             </span>
-            <img src={"" + data.media_url} alt="economy" className="w-[60%]" />
-            <div dangerouslySetInnerHTML={{ __html: data.content }} />
+            <img
+              src={"" + data.media_url}
+              alt="economy"
+              className="w-[60%] max-sm:w-full"
+            />
+            <div
+              dangerouslySetInnerHTML={{ __html: data.content }}
+              className="py-2"
+            />
           </div>
         </div>
       </main>
