@@ -102,7 +102,7 @@ const Article = () => {
           >
             {categories.map((category: any, idx): any => {
               return (
-                <option value={category?.id} key={idx}>
+                <option value={category?.name} key={idx}>
                   {category?.name}
                 </option>
               );
@@ -131,7 +131,7 @@ const Article = () => {
 
         <button
           type="submit"
-          className="btn bg-green-700 text-white self-end px-4 py-2 rounded-sm"
+          className="btn bg-green-700 text-white self-end px-4 py-2 rounded-sm hover:bg-emerald-950"
         >
           Үүсгэх
         </button>

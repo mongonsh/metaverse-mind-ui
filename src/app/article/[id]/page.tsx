@@ -69,7 +69,7 @@ export default async function Article({ params }: any) {
           </div>
           <div className="bg-white shadow-md rounded-lg p-6">
             <span className=" inline-block m-1 p-1 bg-orange-600 text-sky-50 rounded-md">
-              эдийн засаг
+              {data.category_id}
             </span>
             <img
               src={"" + data.media_url}
