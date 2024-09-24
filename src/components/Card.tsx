@@ -3,12 +3,17 @@ import Image from "next/image";
 
 const Card = ({ data }: any) => {
   return (
-    <article className="article-bg p-1 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 z-50 bg-white">
-      <img
-        src={"" + data.media_url}
-        alt="Article 2"
-        className="w-full h-48 object-cover rounded-t-lg"
-      />
+    <article className="article-bg p-1 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 z-50 bg-white w-[100%]">
+      <div className="relative w-[100%] h-[250px]">
+        <Image
+          src={"" + data.media_url}
+          alt="Article 2"
+          fill
+          objectFit="cover"
+          objectPosition="center"
+          className="w-full h-48 object-cover rounded-t-lg"
+        />
+      </div>
       <div className="mt-4">
         <h2 className="text-2xl font-semibold mb-2">{data?.title_mn}</h2>
         <p className="text-gray-200 mb-4">{data?.short_desc}</p>

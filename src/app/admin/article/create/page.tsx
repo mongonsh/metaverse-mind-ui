@@ -8,6 +8,7 @@ import { axiosInstance } from "@/utils/csrf";
 import { languages } from "@/utils/languages";
 import multer from "multer";
 import MessageDialog from "@/components/Dialog";
+import Image from "next/image";
 
 const Article = () => {
   const [title, setTitle] = useState<string>("");
@@ -156,7 +157,7 @@ const Article = () => {
 
       {mediaUrl && (
         <div className="p-2 rounded-sm w-[300px] h-[200px]">
-          <img src={mediaUrl} alt="thumb" />
+          <Image src={mediaUrl} alt="thumb" />
         </div>
       )}
 

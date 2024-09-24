@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Spinner from "@/components/Spinner";
 import Button from "@/components/Button";
 import Image from "next/image";
+import { BsEye } from "react-icons/bs";
 export async function generateStaticParams() {
   const backendUrl = `https://metaverse-mind.vercel.app`;
 
@@ -20,12 +21,10 @@ export async function generateStaticParams() {
 export default async function Article({ params }: any) {
   let { id } = params;
   const backendUrl = `https://metaverse-mind.vercel.app`;
-  console.log("id:", id);
   let res = await axiosInstance.get(
     backendUrl + `/article/get-article?id=${id}`
   );
   let data = res.data;
-
   return (
     <>
       <Header />
@@ -37,28 +36,35 @@ export default async function Article({ params }: any) {
         </div>
       )}
       <main>
-        <div className=" container mx-auto py-4">
+        <div className=" mx-auto py-4">
           <h1 className=" drop-shadow-md font-semibold text-4xl text-center my-3">
             {data.title}
           </h1>
-          <div className="flex justify-between items-center max-sm:flex-col ">
+          <div className="relative h-[500px] shadow-inner shadow-black drop-shadow-lg">
+            <Image
+              src={"" + data.media_url}
+              alt="economy"
+              className="w-[60%] max-sm:w-full"
+              fill
+              objectFit="cover"
+              objectPosition="center"
+              quality={100}
+            />
+            <div className="container mx-auto flex absolute bottom-0 z-50 pb-10 text-white">
+              <p>Sep 23, 2024</p>
+              <p>Tokyo, Japan</p>
+              <p>5 comments</p>
+            </div>
+          </div>
+          <div className="container mx-auto flex justify-between items-center max-sm:flex-col ">
             <div className="flex gap-2 items-center">
-              <div className="relative w-[74px] h-[74px]">
-                <Image
-                  src="/avatar.png"
-                  className="rounded-full "
-                  objectFit="cover"
-                  fill
-                  alt="avatar"
-                />
+              <div className="flex items-center">
+                <BsEye />
+                150
               </div>
-
-              <div className="flex-col gap-1">
-                <h3 className=" text-md font-semibold">
-                  Mungunshagai Tumurbaatar
-                </h3>
-                <p className=" text-[#666666]">engineer, writer</p>
-              </div>
+              <span className=" inline-block m-1 p-1 bg-[#1f1e3b] text-sky-50 rounded-md">
+                {data.category_id}
+              </span>
             </div>
             <div className="links flex gap-1 py-1">
               <Button val={"Share"} />
@@ -68,17 +74,9 @@ export default async function Article({ params }: any) {
             </div>
           </div>
           <div className="bg-white shadow-md rounded-lg p-6">
-            <span className=" inline-block m-1 p-1 bg-orange-600 text-sky-50 rounded-md">
-              {data.category_id}
-            </span>
-            <img
-              src={"" + data.media_url}
-              alt="economy"
-              className="w-[60%] max-sm:w-full"
-            />
             <div
               dangerouslySetInnerHTML={{ __html: data.content }}
-              className="py-2"
+              className="py-2 container mx-auto"
             />
           </div>
         </div>
