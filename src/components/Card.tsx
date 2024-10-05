@@ -9,8 +9,7 @@ const Card = ({ data }: any) => {
           src={"" + data.media_url}
           alt="Article 2"
           fill
-          objectFit="cover"
-          objectPosition="center"
+          style={{ objectFit: "cover", objectPosition: "center" }}
           className="w-full h-48 object-cover rounded-t-lg hover:scale-125 transition-transform duration-300"
         />
       </div>
