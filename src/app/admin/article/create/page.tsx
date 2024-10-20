@@ -12,7 +12,9 @@ import Image from "next/image";
 
 const Article = () => {
   const [title, setTitle] = useState<string>("");
+  const [titleJp, setTitleJp] = useState<string>("");
   const [content, setContent] = useState<string>("");
+  const [contentjp, setContentJp] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [language, setLanguage] = useState<string>("");
   const [uploadedImage, setUploadedImage] = useState("");
@@ -103,7 +105,7 @@ const Article = () => {
           >
             {categories.map((category: any, idx): any => {
               return (
-                <option value={category?.name} key={idx}>
+                <option value={category?.id} key={idx}>
                   {category?.name}
                 </option>
               );
@@ -136,14 +138,25 @@ const Article = () => {
         >
           Үүсгэх
         </button>
-        <input
-          type="text"
-          className="p-2 border-0 border-b-2 border-black"
-          width={"50%"}
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Гарчиг"
-        />
+        <div className="flex gap-3">
+          <input
+            type="text"
+            className="p-2 border-0 border-b-2 border-black"
+            width={"50%"}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Гарчиг"
+          />
+
+          <input
+            type="text"
+            className="p-2 border-0 border-b-2 border-black"
+            width={"50%"}
+            value={titleJp}
+            onChange={(e) => setTitleJp(e.target.value)}
+            placeholder="Гарчиг"
+          />
+        </div>
         <label htmlFor="">Cover зураг байршуулах</label>
         <input
           type="file"
@@ -152,7 +165,10 @@ const Article = () => {
             handleFileChange(e);
           }}
         />
-        <ReactQuillDynamicWrapper value={content} onChange={setContent} />
+        <div className="flex gap-3">
+          <ReactQuillDynamicWrapper value={content} onChange={setContent} />
+          <ReactQuillDynamicWrapper value={contentjp} onChange={setContentJp} />
+        </div>
       </form>
 
       {mediaUrl && (

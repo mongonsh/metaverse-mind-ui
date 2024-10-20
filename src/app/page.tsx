@@ -42,7 +42,7 @@ const Home = () => {
                   <SpecialCard data={articles[0]} />
                 </section>
                 <div className="flex gap-5 flex-1 h-[50vh] py-2 justify-around">
-                  <div className="relative self-start h-[70%] w-[20%] ">
+                  <div className="relative self-start h-[70%] w-[100%] ">
                     <Image
                       alt=""
                       src={"/metaverse_cover.png"}
@@ -51,28 +51,6 @@ const Home = () => {
                         objectFit: "cover",
                       }}
                       className="rounded-md"
-                    />
-                  </div>
-                  <div className="relative self-end h-[70%] w-[20%]">
-                    <Image
-                      alt=""
-                      src={"/metaverse_cover.png"}
-                      fill
-                      className="rounded-md"
-                      style={{
-                        objectFit: "cover",
-                      }}
-                    />
-                  </div>
-                  <div className="relative self-start h-[70%] w-[20%] rounded">
-                    <Image
-                      alt=""
-                      src={"/metaverse_cover.png"}
-                      fill
-                      className="rounded-md"
-                      style={{
-                        objectFit: "cover",
-                      }}
                     />
                   </div>
                 </div>

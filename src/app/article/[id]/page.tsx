@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import Spinner from "@/components/Spinner";
 import Button from "@/components/Button";
 import Image from "next/image";
-import { BsEye } from "react-icons/bs";
+import { BsEye, BsCalendar, BsPin, BsMessenger } from "react-icons/bs";
 
 // Fetch all article IDs for static generation
 export async function generateStaticParams() {
@@ -60,7 +60,7 @@ export default async function Article({ params }: any) {
           <h1 className="drop-shadow-md font-semibold text-4xl text-center my-3">
             {data.title}
           </h1>
-          <div className="relative h-[500px] shadow-inner shadow-black drop-shadow-lg">
+          <div className="relative h-[500px] shadow-inner">
             <Image
               src={data.media_url}
               alt="economy"
@@ -69,10 +69,20 @@ export default async function Article({ params }: any) {
               style={{ objectFit: "cover", objectPosition: "center" }}
               quality={100}
             />
-            <div className="container mx-auto flex absolute bottom-0 z-50 pb-10 text-white">
-              <p>Sep 23, 2024</p>
-              <p>Tokyo, Japan</p>
-              <p>5 comments</p>
+            <div className="absolute bottom-0 left-0 right-0 z-50 pb-10 text-black bg-white">
+              <div className="container mx-auto flex items-center">
+                <p className="flex gap-2 items-center">
+                  <BsCalendar />
+                  Sep 23, 2024
+                </p>
+                <p className="flex gap-2 items-center">
+                  <BsPin />
+                  Tokyo, Japan
+                </p>
+                <p className="flex gap-2 items-center">
+                  <BsMessenger /> 5 comments
+                </p>
+              </div>
             </div>
           </div>
           <div className="container mx-auto flex justify-between items-center max-sm:flex-col">
